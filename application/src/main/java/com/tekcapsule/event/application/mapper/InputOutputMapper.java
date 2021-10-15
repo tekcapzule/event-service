@@ -3,6 +3,7 @@ package com.tekcapsule.event.application.mapper;
 import com.tekcapsule.core.domain.Command;
 import com.tekcapsule.core.domain.ExecBy;
 import com.tekcapsule.core.domain.Origin;
+import com.tekcapsule.event.application.function.input.DisableInput;
 import com.tekcapsule.event.domain.command.CreateCommand;
 import com.tekcapsule.event.domain.command.DisableCommand;
 import com.tekcapsule.event.domain.command.UpdateCommand;

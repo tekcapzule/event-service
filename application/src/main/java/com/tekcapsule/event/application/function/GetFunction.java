@@ -1,5 +1,6 @@
 package com.tekcapsule.event.application.function;
 
+import com.tekcapsule.event.application.function.input.GetInput;
 import com.tekcapsule.event.domain.model.Event;
 import com.tekcapsule.event.domain.service.EventService;
 import lombok.extern.slf4j.Slf4j;
@@ -27,9 +28,9 @@ public class GetFunction implements Function<Message<GetInput>, Message<Event>> 
     public Message<Event> apply(Message<GetInput> getInputMessage) {
         GetInput getInput = getInputMessage.getPayload();
 
-        log.info(String.format("Entering get mentor Function - User Id:{1}",  getInput.getUserId()));
+        log.info(String.format("Entering get event Function - Event Id:{0}",  getInput.getEventId()));
 
-        Event event = eventService.get(getInput.getTenantId(), getInput.getUserId());
+        Event event = eventService.get(getInput.getEventId());
         Map<String, Object> responseHeader = new HashMap();
         if (event == null) {
             responseHeader.put(AppConstants.HTTP_STATUS_CODE_HEADER, HttpStatus.NOT_FOUND.value());

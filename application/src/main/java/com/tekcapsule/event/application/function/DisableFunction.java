@@ -2,6 +2,7 @@ package com.tekcapsule.event.application.function;
 
 import com.tekcapsule.core.domain.Origin;
 import com.tekcapsule.core.utils.HeaderUtil;
+import com.tekcapsule.event.application.function.input.DisableInput;
 import com.tekcapsule.event.application.mapper.InputOutputMapper;
 import com.tekcapsule.event.domain.command.DisableCommand;
 import com.tekcapsule.event.domain.service.EventService;
@@ -31,7 +32,7 @@ public class DisableFunction implements Function<Message<DisableInput>, Message<
 
         DisableInput disableInput = disableInputMessage.getPayload();
 
-        log.info(String.format("Entering disable mentor Function - User Id:{1}", disableInput.getUserId()));
+        log.info(String.format("Entering disable event Function - Event Id:{0}", disableInput.getEventId()));
 
         Origin origin = HeaderUtil.buildOriginFromHeaders(disableInputMessage.getHeaders());
 
