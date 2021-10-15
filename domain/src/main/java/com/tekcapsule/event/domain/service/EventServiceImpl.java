@@ -6,7 +6,6 @@ import com.tekcapsule.event.domain.command.UpdateCommand;
 import com.tekcapsule.event.domain.model.Event;
 import com.tekcapsule.event.domain.query.SearchItem;
 import com.tekcapsule.event.domain.query.SearchQuery;
-import com.tekcapsule.event.domain.repository.CapsuleDynamoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -17,7 +16,7 @@ import java.util.List;
 
 @Slf4j
 @Service
-public class CapsuleServiceImpl implements CapsuleService {
+public class EventServiceImpl implements CapsuleService {
     private CapsuleDynamoRepository mentorRepository;
 
     @Autowired

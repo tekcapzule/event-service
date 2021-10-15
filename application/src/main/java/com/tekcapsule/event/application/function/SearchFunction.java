@@ -1,10 +1,7 @@
 package com.tekcapsule.event.application.function;
 
-import com.tekcapsule.event.application.config.AppConstants;
-import com.tekcapsule.event.application.function.input.SearchInput;
-import in.devstream.mentor.domain.query.SearchItem;
-import in.devstream.mentor.domain.query.SearchQuery;
-import in.devstream.mentor.domain.service.MentorService;
+import com.tekcapsule.event.domain.query.SearchItem;
+import com.tekcapsule.event.domain.service.EventService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.messaging.Message;
@@ -21,10 +18,10 @@ import java.util.function.Function;
 @Slf4j
 public class SearchFunction implements Function<Message<SearchInput>, Message<List<SearchItem>>> {
 
-    private final MentorService mentorService;
+    private final EventService eventService;
 
-    public SearchFunction(final MentorService mentorService) {
-        this.mentorService = mentorService;
+    public SearchFunction(final EventService eventService) {
+        this.eventService = eventService;
     }
 
 

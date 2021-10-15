@@ -1,12 +1,8 @@
 package com.tekcapsule.event.application.function;
 
-import com.tekcapsule.event.application.mapper.InputOutputMapper;
+import com.tekcapsule.event.domain.service.EventService;
 import in.devstream.core.domain.Origin;
 import in.devstream.core.utils.HeaderUtil;
-import com.tekcapsule.event.application.function.input.DisableInput;
-import in.devstream.mentor.domain.command.DisableCommand;
-import in.devstream.mentor.domain.service.MentorService;
-import com.tekcapsule.event.application.config.AppConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.messaging.Message;
@@ -20,10 +16,11 @@ import java.util.function.Function;
 @Component
 @Slf4j
 public class DisableFunction implements Function<Message<DisableInput>, Message<Void>> {
-    private final MentorService mentorService;
 
-    public DisableFunction(final MentorService mentorService) {
-        this.mentorService = mentorService;
+    private final EventService eventService;
+
+    public DisableFunction(final EventService eventService) {
+        this.eventService = eventService;
     }
 
 
@@ -32,12 +29,12 @@ public class DisableFunction implements Function<Message<DisableInput>, Message<
 
         DisableInput disableInput = disableInputMessage.getPayload();
 
-        log.info(String.format("Entering disable mentor Function - Tenant Id:{0}, User Id:{1}", disableInput.getTenantId(), disableInput.getUserId()));
+        log.info(String.format("Entering disable mentor Function - User Id:{1}", disableInput.getUserId()));
 
         Origin origin = HeaderUtil.buildOriginFromHeaders(disableInputMessage.getHeaders());
 
         DisableCommand disableCommand = InputOutputMapper.buildDisableCommandFromDisableInput.apply(disableInput, origin);
-        mentorService.disable(disableCommand);
+        eventService.disable(disableCommand);
         Map<String, Object> responseHeader = new HashMap();
         responseHeader.put(AppConstants.HTTP_STATUS_CODE_HEADER, HttpStatus.OK.value());
 

@@ -9,7 +9,7 @@ import com.tekcapsule.event.domain.query.SearchQuery;
 
 import java.util.List;
 
-public interface CapsuleService {
+public interface EventService {
 
     Event create(CreateCommand createCommand);
 

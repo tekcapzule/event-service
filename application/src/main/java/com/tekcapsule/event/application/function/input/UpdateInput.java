@@ -10,16 +10,9 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @NoArgsConstructor
 public class UpdateInput {
-    private String tenantId;
-    private String userId;
-    private String headLine;
-    private Contact contact;
-    private String photoUrl;
-    private List<String> tags;
-    List<ProfessionalExperience> professionalExperiences;
-    List<EducationalQualification> educationalQualifications;
-    List<Award> awards;
-    List<Certification> certifications;
-    List<Publication> publications;
-    private Social social;
+    private String name;
+    private String eventDate;
+    private String imageUrl;
+    private String description;
+    private String registrationUrl;
 }

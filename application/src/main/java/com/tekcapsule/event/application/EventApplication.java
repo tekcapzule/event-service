@@ -3,7 +3,7 @@ package com.tekcapsule.event.application;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = {"in.tekcapsule.capsule","in.tekcapsule.core"})
+@SpringBootApplication(scanBasePackages = {"com.tekcapsule.event","com.tekcapsule.core"})
 public class EventApplication {
 
     public static void main(String[] args) {
