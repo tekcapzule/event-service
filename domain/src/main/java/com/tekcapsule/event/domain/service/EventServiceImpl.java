@@ -3,9 +3,7 @@ package com.tekcapsule.event.domain.service;
 import com.tekcapsule.event.domain.command.CreateCommand;
 import com.tekcapsule.event.domain.command.DisableCommand;
 import com.tekcapsule.event.domain.command.UpdateCommand;
-import com.tekcapsule.event.domain.model.DateOfBirth;
-import com.tekcapsule.event.domain.model.Mentor;
-import com.tekcapsule.event.domain.model.Name;
+import com.tekcapsule.event.domain.model.Event;
 import com.tekcapsule.event.domain.query.SearchItem;
 import com.tekcapsule.event.domain.query.SearchQuery;
 import com.tekcapsule.event.domain.repository.CapsuleDynamoRepository;
@@ -28,7 +26,7 @@ public class CapsuleServiceImpl implements CapsuleService {
     }
 
     @Override
-    public Mentor create(CreateCommand createCommand) {
+    public Event create(CreateCommand createCommand) {
 
         log.info(String.format("Entering create mentor service - Tenant Id:{0}, Name:{1}", createCommand.getTenantId(), createCommand.getName().toString()));
 
@@ -40,7 +38,7 @@ public class CapsuleServiceImpl implements CapsuleService {
         if (dateOfBirth != null) {
             dateOfBirth.setDateOfBirth(String.format("{0}/{1}/{2}", dateOfBirth.getDay(), dateOfBirth.getMonth(), dateOfBirth.getYear()));
         }
-        Mentor mentor = Mentor.builder()
+        Event event = Event.builder()
                 .active(true)
                 .activeSince(DateTime.now(DateTimeZone.UTC).toString())
                 .blocked(false)
@@ -59,37 +57,37 @@ public class CapsuleServiceImpl implements CapsuleService {
                 .userId(createCommand.getContact().getEmailId())
                 .build();
 
-        mentor.setAddedOn(createCommand.getExecOn());
-        mentor.setUpdatedOn(createCommand.getExecOn());
-        mentor.setAddedBy(createCommand.getExecBy().getUserId());
+        event.setAddedOn(createCommand.getExecOn());
+        event.setUpdatedOn(createCommand.getExecOn());
+        event.setAddedBy(createCommand.getExecBy().getUserId());
 
-        return mentorRepository.save(mentor);
+        return mentorRepository.save(event);
     }
 
     @Override
-    public Mentor update(UpdateCommand updateCommand) {
+    public Event update(UpdateCommand updateCommand) {
 
         log.info(String.format("Entering update mentor service - Tenant Id:{0}, User Id:{1}", updateCommand.getTenantId(), updateCommand.getUserId()));
 
-        Mentor mentor = mentorRepository.findBy(updateCommand.getTenantId(), updateCommand.getUserId());
-        if (mentor != null) {
-            mentor.setAwards(updateCommand.getAwards());
-            mentor.setHeadLine(updateCommand.getHeadLine());
-            mentor.setContact(updateCommand.getContact());
-            mentor.setCertifications(updateCommand.getCertifications());
-            mentor.setPhotoUrl(updateCommand.getPhotoUrl());
-            mentor.setTags(updateCommand.getTags());
-            mentor.setSocial(updateCommand.getSocial());
-            mentor.setEducationalQualifications(updateCommand.getEducationalQualifications());
-            mentor.setProfessionalExperiences(updateCommand.getProfessionalExperiences());
-            mentor.setPublications(updateCommand.getPublications());
+        Event event = mentorRepository.findBy(updateCommand.getTenantId(), updateCommand.getUserId());
+        if (event != null) {
+            event.setAwards(updateCommand.getAwards());
+            event.setHeadLine(updateCommand.getHeadLine());
+            event.setContact(updateCommand.getContact());
+            event.setCertifications(updateCommand.getCertifications());
+            event.setPhotoUrl(updateCommand.getPhotoUrl());
+            event.setTags(updateCommand.getTags());
+            event.setSocial(updateCommand.getSocial());
+            event.setEducationalQualifications(updateCommand.getEducationalQualifications());
+            event.setProfessionalExperiences(updateCommand.getProfessionalExperiences());
+            event.setPublications(updateCommand.getPublications());
 
-            mentor.setUpdatedOn(updateCommand.getExecOn());
-            mentor.setUpdatedBy(updateCommand.getExecBy().getUserId());
+            event.setUpdatedOn(updateCommand.getExecOn());
+            event.setUpdatedBy(updateCommand.getExecBy().getUserId());
 
-            mentorRepository.save(mentor);
+            mentorRepository.save(event);
         }
-        return mentor;
+        return event;
     }
 
     @Override
@@ -109,7 +107,7 @@ public class CapsuleServiceImpl implements CapsuleService {
     }
 
     @Override
-    public Mentor get(String tenantId, String userId) {
+    public Event get(String tenantId, String userId) {
 
         log.info(String.format("Entering get mentor service - Tenant Id:{0}, User Id:{1}", tenantId, userId));
 

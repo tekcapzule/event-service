@@ -2,7 +2,7 @@ package com.tekcapsule.event.domain.repository;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
-import com.tekcapsule.event.domain.model.Mentor;
+import com.tekcapsule.event.domain.model.Event;
 import com.tekcapsule.event.domain.query.SearchItem;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Repository
-public class CapsuleRepositoryImpl implements CapsuleDynamoRepository {
+public class EventRepositoryImpl implements EventDynamoRepository {
 
     private DynamoDBMapper dynamo;
 
@@ -24,59 +24,59 @@ public class CapsuleRepositoryImpl implements CapsuleDynamoRepository {
     }
 
     @Override
-    public List<Mentor> findAll(String tenantId) {
+    public List<Event> findAll(String tenantId) {
 
-        Mentor hashKey = Mentor.builder().tenantId(tenantId).build();
-        DynamoDBQueryExpression<Mentor> queryExpression = new DynamoDBQueryExpression<Mentor>()
+        Event hashKey = Event.builder().tenantId(tenantId).build();
+        DynamoDBQueryExpression<Event> queryExpression = new DynamoDBQueryExpression<Event>()
                 .withHashKeyValues(hashKey);
 
-        return dynamo.query(Mentor.class, queryExpression);
+        return dynamo.query(Event.class, queryExpression);
     }
 
     @Override
-    public Mentor findBy(String tenantId, String userId) {
-        return dynamo.load(Mentor.class, tenantId, userId);
+    public Event findBy(String tenantId, String userId) {
+        return dynamo.load(Event.class, tenantId, userId);
     }
 
     @Override
-    public Mentor save(Mentor mentor) {
-        dynamo.save(mentor);
-        return mentor;
+    public Event save(Event event) {
+        dynamo.save(event);
+        return event;
     }
 
     @Override
     public void delete(String tenantId, String id) {
-        Mentor mentor = findBy(tenantId, id);
-        if (mentor != null) {
-            dynamo.delete(mentor);
+        Event event = findBy(tenantId, id);
+        if (event != null) {
+            dynamo.delete(event);
         }
     }
 
     @Override
     public void disableById(String tenantId, String id) {
-        Mentor mentor = findBy(tenantId, id);
-        if (mentor != null) {
-            mentor.setActive(false);
-            dynamo.save(mentor);
+        Event event = findBy(tenantId, id);
+        if (event != null) {
+            event.setActive(false);
+            dynamo.save(event);
         }
     }
 
     @Override
     public List<SearchItem> search(String tenantId) {
-        Mentor hashKey = Mentor.builder().tenantId(tenantId).build();
-        DynamoDBQueryExpression<Mentor> queryExpression = new DynamoDBQueryExpression<Mentor>()
+        Event hashKey = Event.builder().tenantId(tenantId).build();
+        DynamoDBQueryExpression<Event> queryExpression = new DynamoDBQueryExpression<Event>()
                 .withHashKeyValues(hashKey);
-        List<Mentor> mentors = dynamo.query(Mentor.class, queryExpression);
+        List<Event> events = dynamo.query(Event.class, queryExpression);
         List<SearchItem> searchItems = new ArrayList<SearchItem>();
-        if (mentors != null) {
-            searchItems = mentors.stream().map(mentor -> {
+        if (events != null) {
+            searchItems = events.stream().map(event -> {
                 return SearchItem.builder()
-                        .activeSince(mentor.getActiveSince())
-                        .headLine(mentor.getHeadLine())
-                        .name(mentor.getName())
-                        .photoUrl(mentor.getPhotoUrl())
-                        .rating(mentor.getRating())
-                        .social(mentor.getSocial())
+                        .activeSince(event.getActiveSince())
+                        .headLine(event.getHeadLine())
+                        .name(event.getName())
+                        .photoUrl(event.getPhotoUrl())
+                        .rating(event.getRating())
+                        .social(event.getSocial())
                         .build();
             }).collect(Collectors.toList());
         }
