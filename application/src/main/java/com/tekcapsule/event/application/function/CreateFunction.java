@@ -1,10 +1,12 @@
 package com.tekcapsule.event.application.function;
 
+import com.tekcapsule.core.domain.Origin;
+import com.tekcapsule.core.utils.HeaderUtil;
+import com.tekcapsule.event.application.function.input.CreateInput;
+import com.tekcapsule.event.application.mapper.InputOutputMapper;
 import com.tekcapsule.event.domain.command.CreateCommand;
 import com.tekcapsule.event.domain.model.Event;
 import com.tekcapsule.event.domain.service.EventService;
-import in.devstream.core.domain.Origin;
-import in.devstream.core.utils.HeaderUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.messaging.Message;
@@ -15,7 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import static com.tekcapsule.event.application.config.AppConstants.HTTP_STATUS_CODE_HEADER;
 
 @Component
 @Slf4j
@@ -33,14 +34,14 @@ public class CreateFunction implements Function<Message<CreateInput>, Message<Ev
 
         CreateInput createInput = createInputMessage.getPayload();
 
-        log.info(String.format("Entering create mentor Function - Name:{1}",createInput.getName().toString()));
+        log.info(String.format("Entering create event Function - Name:{1}",createInput.getName().toString()));
 
         Origin origin = HeaderUtil.buildOriginFromHeaders(createInputMessage.getHeaders());
 
         CreateCommand createCommand = InputOutputMapper.buildCreateCommandFromCreateInput.apply(createInput, origin);
         Event event = eventService.create(createCommand);
         Map<String, Object> responseHeader = new HashMap();
-        responseHeader.put(HTTP_STATUS_CODE_HEADER, HttpStatus.OK.value());
+        responseHeader.put(AppConstants.HTTP_STATUS_CODE_HEADER, HttpStatus.OK.value());
 
         return new GenericMessage(event, responseHeader);
     }
