@@ -2,6 +2,7 @@ package com.tekcapsule.event.application.function;
 
 import com.tekcapsule.core.domain.Origin;
 import com.tekcapsule.core.utils.HeaderUtil;
+import com.tekcapsule.event.application.config.AppConstants;
 import com.tekcapsule.event.application.function.input.CreateInput;
 import com.tekcapsule.event.application.mapper.InputOutputMapper;
 import com.tekcapsule.event.domain.command.CreateCommand;

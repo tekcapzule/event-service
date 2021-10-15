@@ -1,5 +1,6 @@
 package com.tekcapsule.event.application.function;
 
+import com.tekcapsule.event.application.config.AppConstants;
 import com.tekcapsule.event.application.function.input.GetInput;
 import com.tekcapsule.event.domain.model.Event;
 import com.tekcapsule.event.domain.service.EventService;
