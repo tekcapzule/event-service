@@ -17,7 +17,7 @@ provider:
     APPLICATION_ENVIRONMENT: Dev
     CLOUD_REGION: US_East_2
 functions:
-  createMentor:
+  creatEvent:
     handler: org.springframework.cloud.function.adapter.aws.SpringBootStreamHandler
     events:
       - http:
@@ -25,7 +25,7 @@ functions:
           method: post
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: createFunction
-  updateMentor:
+  updateEvent:
     handler: org.springframework.cloud.function.adapter.aws.SpringBootStreamHandler
     events:
       - http:
@@ -33,7 +33,7 @@ functions:
           method: post
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: updateFunction
-  disableMentor:
+  disableEvent:
     handler: org.springframework.cloud.function.adapter.aws.SpringBootStreamHandler
     events:
       - http:
@@ -41,22 +41,14 @@ functions:
           method: post
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: disableFunction
-  getMentor:
+  getEvent:
     handler: org.springframework.cloud.function.adapter.aws.SpringBootStreamHandler
     events:
       - http:
-          path: event/searchById
+          path: event/findById
           method: post
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: getFunction
-  searchMentor:
-    handler: org.springframework.cloud.function.adapter.aws.SpringBootStreamHandler
-    events:
-      - http:
-          path: event/search
-          method: post
-    environment:
-      SPRING_CLOUD_FUNCTION_DEFINITION: searchFunction
 
 resources:
   Resources:
@@ -65,14 +57,14 @@ resources:
       Properties:
         TableName: Event
         AttributeDefinitions:
-          - AttributeName: tenantId
+          - AttributeName: name
             AttributeType: S
-          - AttributeName: userId
+          - AttributeName: eventDate
             AttributeType: S
         KeySchema:
-          - AttributeName: tenantId
+          - AttributeName: name
             KeyType: HASH
-          - AttributeName: userId
+          - AttributeName: eventDate
             KeyType: RANGE
         ProvisionedThroughput:
           ReadCapacityUnits: 1
