@@ -10,7 +10,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder
 public class UpdateCommand extends Command {
-    private String eventId;
+    private String code;
     private String name;
     private String eventDate;
     private String imageUrl;

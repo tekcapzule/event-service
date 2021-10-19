@@ -33,7 +33,7 @@ public class DisableFunction implements Function<Message<DisableInput>, Message<
 
         DisableInput disableInput = disableInputMessage.getPayload();
 
-        log.info(String.format("Entering disable event Function - Event Id:{0}", disableInput.getEventId()));
+        log.info(String.format("Entering disable event Function - Event Id:{0}", disableInput.getCode()));
 
         Origin origin = HeaderUtil.buildOriginFromHeaders(disableInputMessage.getHeaders());
 

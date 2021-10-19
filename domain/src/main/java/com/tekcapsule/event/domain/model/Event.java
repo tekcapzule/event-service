@@ -18,10 +18,12 @@ import lombok.*;
 @NoArgsConstructor
 public class Event extends BaseDomainEntity<String> implements AggregateRoot {
 
-    @DynamoDBHashKey(attributeName="name")
-    private String name;
+    @DynamoDBHashKey(attributeName="code")
+    private String code;
     @DynamoDBRangeKey(attributeName="eventDate")
     private String eventDate;
+    @DynamoDBAttribute(attributeName = "name")
+    private String name;
     @DynamoDBAttribute(attributeName = "imageUrl")
     private String imageUrl;
     @DynamoDBAttribute(attributeName = "description")

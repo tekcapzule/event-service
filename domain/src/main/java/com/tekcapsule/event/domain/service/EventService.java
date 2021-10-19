@@ -13,5 +13,5 @@ public interface EventService {
 
     void disable(DisableCommand disableCommand);
 
-    Event get(String eventId);
+    Event get(String code);
 }

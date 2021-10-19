@@ -10,6 +10,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder
 public class CreateCommand extends Command {
+    private String code;
     private String name;
     private String eventDate;
     private String imageUrl;

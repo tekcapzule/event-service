@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @NoArgsConstructor
 public class CreateInput {
+    private String code;
     private String name;
     private String eventDate;
     private String imageUrl;

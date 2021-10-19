@@ -26,8 +26,8 @@ public class EventRepositoryImpl implements EventDynamoRepository {
     }
 
     @Override
-    public Event findBy(String eventId) {
-        return dynamo.load(Event.class, eventId);
+    public Event findBy(String code) {
+        return dynamo.load(Event.class, code);
     }
 
     @Override
@@ -37,8 +37,8 @@ public class EventRepositoryImpl implements EventDynamoRepository {
     }
 
     @Override
-    public void disable(String eventId) {
-        Event event = findBy(eventId);
+    public void disable(String code) {
+        Event event = findBy(code);
         if (event != null) {
             event.setActive(false);
             dynamo.save(event);

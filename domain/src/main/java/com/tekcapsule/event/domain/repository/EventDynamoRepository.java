@@ -5,5 +5,5 @@ import com.tekcapsule.event.domain.model.Event;
 
 public interface EventDynamoRepository extends CrudRepository<Event, String> {
 
-    void disable(String eventId);
+    void disable(String code);
 }

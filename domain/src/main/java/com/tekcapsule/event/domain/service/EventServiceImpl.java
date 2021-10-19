@@ -39,9 +39,9 @@ public class EventServiceImpl implements EventService {
     @Override
     public Event update(UpdateCommand updateCommand) {
 
-        log.info(String.format("Entering update event service - Event Id:{0}", updateCommand.getEventId()));
+        log.info(String.format("Entering update event service - Event Id:{0}", updateCommand.getCode()));
 
-        Event event = eventDynamoRepository.findBy(updateCommand.getEventId());
+        Event event = eventDynamoRepository.findBy(updateCommand.getCode());
         if (event != null) {
 
             event.setUpdatedOn(updateCommand.getExecOn());
@@ -55,9 +55,9 @@ public class EventServiceImpl implements EventService {
     @Override
     public void disable(DisableCommand disableCommand) {
 
-        log.info(String.format("Entering disable event service - Event Id:{0}", disableCommand.getEventId()));
+        log.info(String.format("Entering disable event service - Event Id:{0}", disableCommand.getCode()));
 
-        eventDynamoRepository.disable(disableCommand.getEventId());
+        eventDynamoRepository.disable(disableCommand.getCode());
     }
 
     @Override

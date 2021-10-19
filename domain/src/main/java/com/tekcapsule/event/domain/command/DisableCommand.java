@@ -9,5 +9,5 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder
 public class DisableCommand extends Command {
-    private String eventId;
+    private String code;
 }
