@@ -57,12 +57,12 @@ resources:
       Properties:
         TableName: Event
         AttributeDefinitions:
-          - AttributeName: name
+          - AttributeName: code
             AttributeType: S
           - AttributeName: eventDate
             AttributeType: S
         KeySchema:
-          - AttributeName: name
+          - AttributeName: code
             KeyType: HASH
           - AttributeName: eventDate
             KeyType: RANGE
