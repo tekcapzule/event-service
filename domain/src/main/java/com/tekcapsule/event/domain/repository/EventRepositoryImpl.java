@@ -36,12 +36,4 @@ public class EventRepositoryImpl implements EventDynamoRepository {
         return event;
     }
 
-    @Override
-    public void disable(String code) {
-        Event event = findBy(code);
-        if (event != null) {
-            event.setActive(false);
-            dynamo.save(event);
-        }
-    }
 }

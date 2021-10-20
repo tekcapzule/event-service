@@ -5,6 +5,8 @@ import com.tekcapsule.event.domain.command.DisableCommand;
 import com.tekcapsule.event.domain.command.UpdateCommand;
 import com.tekcapsule.event.domain.model.Event;
 
+import java.util.List;
+
 public interface EventService {
 
     Event create(CreateCommand createCommand);
@@ -13,5 +15,8 @@ public interface EventService {
 
     void disable(DisableCommand disableCommand);
 
-    Event get(String code);
+    Event findBy(String code);
+
+    List<Event> findAll();
+
 }

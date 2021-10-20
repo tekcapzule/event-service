@@ -29,9 +29,9 @@ public class GetFunction implements Function<Message<GetInput>, Message<Event>> 
     public Message<Event> apply(Message<GetInput> getInputMessage) {
         GetInput getInput = getInputMessage.getPayload();
 
-        log.info(String.format("Entering get event Function - Event Id:{0}",  getInput.getCode()));
+        log.info(String.format("Entering find by event Function - Event Code:{0}",  getInput.getCode()));
 
-        Event event = eventService.get(getInput.getCode());
+        Event event = eventService.findBy(getInput.getCode());
         Map<String, Object> responseHeader = new HashMap();
         if (event == null) {
             responseHeader.put(AppConstants.HTTP_STATUS_CODE_HEADER, HttpStatus.NOT_FOUND.value());

@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Slf4j
 @Service
@@ -24,9 +26,15 @@ public class EventServiceImpl implements EventService {
     @Override
     public Event create(CreateCommand createCommand) {
 
-        log.info(String.format("Entering create event service - Event Name:{0}", createCommand.getName()));
+        log.info(String.format("Entering create event service - Event Code:{0}", createCommand.getName()));
 
         Event event = Event.builder()
+                .code(createCommand.getCode())
+                .name(createCommand.getName())
+                .description(createCommand.getDescription())
+                .eventDate(createCommand.getEventDate())
+                .imageUrl(createCommand.getImageUrl())
+                .registrationUrl(createCommand.getRegistrationUrl())
                 .active(true)
                 .build();
         event.setAddedOn(createCommand.getExecOn());
@@ -39,11 +47,16 @@ public class EventServiceImpl implements EventService {
     @Override
     public Event update(UpdateCommand updateCommand) {
 
-        log.info(String.format("Entering update event service - Event Id:{0}", updateCommand.getCode()));
+        log.info(String.format("Entering update event service - Event Code:{0}", updateCommand.getCode()));
 
         Event event = eventDynamoRepository.findBy(updateCommand.getCode());
         if (event != null) {
 
+            event.setName(updateCommand.getName());
+            event.setDescription(updateCommand.getDescription());
+            event.setEventDate(updateCommand.getEventDate());
+            event.setImageUrl(updateCommand.getImageUrl());
+            event.setRegistrationUrl(updateCommand.getRegistrationUrl());
             event.setUpdatedOn(updateCommand.getExecOn());
             event.setUpdatedBy(updateCommand.getExecBy().getUserId());
 
@@ -55,16 +68,28 @@ public class EventServiceImpl implements EventService {
     @Override
     public void disable(DisableCommand disableCommand) {
 
-        log.info(String.format("Entering disable event service - Event Id:{0}", disableCommand.getCode()));
+        log.info(String.format("Entering disable event service - Event Code:{0}", disableCommand.getCode()));
 
-        eventDynamoRepository.disable(disableCommand.getCode());
+        Event event = eventDynamoRepository.findBy(disableCommand.getCode());
+        if (event != null) {
+            event.setActive(false);
+            event.setUpdatedOn(disableCommand.getExecOn());
+            event.setUpdatedBy(disableCommand.getExecBy().getUserId());
+            eventDynamoRepository.save(event);
+        }
     }
 
     @Override
-    public Event get(String eventId) {
+    public Event findBy(String code) {
+        log.info(String.format("Entering find by event service - Event Code:{0}", code));
 
-        log.info(String.format("Entering get event service - Event Id:{0}", eventId));
-
-        return eventDynamoRepository.findBy(eventId);
+        return eventDynamoRepository.findBy(code);
     }
+
+    @Override
+    public List<Event> findAll() {
+        log.info(String.format("Entering find all events service"));
+
+        return eventDynamoRepository.findAll();        }
+
 }
