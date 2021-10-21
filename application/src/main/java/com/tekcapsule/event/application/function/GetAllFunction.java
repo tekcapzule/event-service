@@ -16,18 +16,18 @@ import java.util.function.Function;
 
 @Component
 @Slf4j
-public class FindAllFunction implements Function<Message<Void>, Message<List<Event>>> {
+public class GetAllFunction implements Function<Message<Void>, Message<List<Event>>> {
 
     private final EventService eventService;
 
-    public FindAllFunction(final EventService eventService) {
+    public GetAllFunction(final EventService eventService) {
         this.eventService = eventService;
     }
 
     @Override
     public Message<List<Event>> apply(Message<Void> findAllMessage) {
 
-        log.info(String.format("Entering find all events Function"));
+        log.info(String.format("Entering get all events Function"));
 
         List<Event> events = eventService.findAll();
         Map<String, Object> responseHeader = new HashMap();

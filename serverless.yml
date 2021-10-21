@@ -49,14 +49,14 @@ functions:
           method: post
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: getFunction
-  findAllEvent:
+  getAllEvent:
     handler: org.springframework.cloud.function.adapter.aws.SpringBootStreamHandler
     events:
       - http:
-          path: event/findAll
+          path: event/getAll
           method: post
     environment:
-      SPRING_CLOUD_FUNCTION_DEFINITION: findAllFunction
+      SPRING_CLOUD_FUNCTION_DEFINITION: getAllFunction
 resources:
   Resources:
     productsTable:
