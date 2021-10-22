@@ -27,7 +27,7 @@ public class GetAllFunction implements Function<Message<Void>, Message<List<Even
     @Override
     public Message<List<Event>> apply(Message<Void> findAllMessage) {
 
-        log.info(String.format("Entering get all events Function"));
+        log.info("Entering get all events Function");
 
         List<Event> events = eventService.findAll();
         Map<String, Object> responseHeader = new HashMap();

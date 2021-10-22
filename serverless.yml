@@ -59,7 +59,7 @@ functions:
       SPRING_CLOUD_FUNCTION_DEFINITION: getAllFunction
 resources:
   Resources:
-    productsTable:
+    eventTable:
       Type: AWS::DynamoDB::Table
       Properties:
         TableName: Event

@@ -26,7 +26,7 @@ public class EventServiceImpl implements EventService {
     @Override
     public Event create(CreateCommand createCommand) {
 
-        log.info(String.format("Entering create event service - Event Code:{0}", createCommand.getName()));
+        log.info(String.format("Entering create event service - Event Code:%S", createCommand.getName()));
 
         Event event = Event.builder()
                 .code(createCommand.getCode())
@@ -47,7 +47,7 @@ public class EventServiceImpl implements EventService {
     @Override
     public Event update(UpdateCommand updateCommand) {
 
-        log.info(String.format("Entering update event service - Event Code:{0}", updateCommand.getCode()));
+        log.info(String.format("Entering update event service - Event Code:%S", updateCommand.getCode()));
 
         Event event = eventDynamoRepository.findBy(updateCommand.getCode());
         if (event != null) {
@@ -68,7 +68,7 @@ public class EventServiceImpl implements EventService {
     @Override
     public void disable(DisableCommand disableCommand) {
 
-        log.info(String.format("Entering disable event service - Event Code:{0}", disableCommand.getCode()));
+        log.info(String.format("Entering disable event service - Event Code:%S", disableCommand.getCode()));
 
         Event event = eventDynamoRepository.findBy(disableCommand.getCode());
         if (event != null) {
@@ -81,14 +81,14 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Event findBy(String code) {
-        log.info(String.format("Entering find by event service - Event Code:{0}", code));
+        log.info(String.format("Entering find by event service - Event Code:%S", code));
 
         return eventDynamoRepository.findBy(code);
     }
 
     @Override
     public List<Event> findAll() {
-        log.info(String.format("Entering find all events service"));
+        log.info("Entering find all events service");
 
         return eventDynamoRepository.findAll();        }
 
