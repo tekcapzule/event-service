@@ -32,13 +32,13 @@ public class GetFunction implements Function<Message<GetInput>, Message<Event>> 
         log.info(String.format("Entering find by event Function - Event Code:%S}",  getInput.getCode()));
 
         Event event = eventService.findBy(getInput.getCode());
-        Map<String, Object> responseHeader = new HashMap();
+        Map<String, Object> responseHeader = new HashMap<>();
         if (event == null) {
             responseHeader.put(AppConstants.HTTP_STATUS_CODE_HEADER, HttpStatus.NOT_FOUND.value());
             event = Event.builder().build();
         } else {
             responseHeader.put(AppConstants.HTTP_STATUS_CODE_HEADER, HttpStatus.OK.value());
         }
-        return new GenericMessage(event, responseHeader);
+        return new GenericMessage<>(event, responseHeader);
     }
 }

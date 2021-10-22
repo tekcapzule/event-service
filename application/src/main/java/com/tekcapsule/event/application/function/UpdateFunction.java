@@ -40,10 +40,10 @@ public class UpdateFunction implements Function<Message<UpdateInput>, Message<Ev
 
         UpdateCommand updateCommand = InputOutputMapper.buildUpdateCommandFromUpdateInput.apply(updateInput, origin);
         Event event = eventService.update(updateCommand);
-        Map<String, Object> responseHeader = new HashMap();
+        Map<String, Object> responseHeader = new HashMap<>();
         responseHeader.put(AppConstants.HTTP_STATUS_CODE_HEADER, HttpStatus.OK.value());
 
-        return new GenericMessage(event, responseHeader);
+        return new GenericMessage<>(event, responseHeader);
 
     }
 }

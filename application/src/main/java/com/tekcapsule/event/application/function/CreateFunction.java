@@ -41,9 +41,9 @@ public class CreateFunction implements Function<Message<CreateInput>, Message<Ev
 
         CreateCommand createCommand = InputOutputMapper.buildCreateCommandFromCreateInput.apply(createInput, origin);
         Event event = eventService.create(createCommand);
-        Map<String, Object> responseHeader = new HashMap();
+        Map<String, Object> responseHeader = new HashMap<>();
         responseHeader.put(AppConstants.HTTP_STATUS_CODE_HEADER, HttpStatus.OK.value());
 
-        return new GenericMessage(event, responseHeader);
+        return new GenericMessage<>(event, responseHeader);
     }
 }

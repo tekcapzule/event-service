@@ -30,9 +30,9 @@ public class GetAllFunction implements Function<Message<Void>, Message<List<Even
         log.info("Entering get all events Function");
 
         List<Event> events = eventService.findAll();
-        Map<String, Object> responseHeader = new HashMap();
+        Map<String, Object> responseHeader = new HashMap<>();
         responseHeader.put(AppConstants.HTTP_STATUS_CODE_HEADER, HttpStatus.NOT_FOUND.value());
 
-        return new GenericMessage(events, responseHeader);
+        return new GenericMessage<>(events, responseHeader);
     }
 }
