@@ -31,7 +31,7 @@ functions:
               application/json:
                 schema: ${file(api-gateway/create.json)}
                 name: CreateEventModel
-                description: 'get subscribe model'
+                description: 'create event model'
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: createFunction
   updateEvent:
@@ -47,7 +47,7 @@ functions:
               application/json:
                 schema: ${file(api-gateway/update.json)}
                 name: UpdateEventModel
-                description: 'get subscribe model'
+                description: 'update event model'
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: updateFunction
   disableEvent:
@@ -63,7 +63,7 @@ functions:
               application/json:
                 schema: ${file(api-gateway/disable.json)}
                 name: DisableEventModel
-                description: 'get subscribe model'
+                description: 'disable event model'
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: disableFunction
   getEvent:
@@ -78,7 +78,7 @@ functions:
               application/json:
                 schema: ${file(api-gateway/get.json)}
                 name: GetEventModel
-                description: 'get subscribe model'
+                description: 'get event model'
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: getFunction
   getAllEvent:
@@ -93,7 +93,7 @@ functions:
               application/json:
                 schema: ${file(api-gateway/getAll.json)}
                 name: GetAllEventsModel
-                description: 'get subscribe model'
+                description: 'get all events model'
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: getAllFunction
 resources:
