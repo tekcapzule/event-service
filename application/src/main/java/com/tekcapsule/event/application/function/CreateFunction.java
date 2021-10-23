@@ -35,7 +35,7 @@ public class CreateFunction implements Function<Message<CreateInput>, Message<Vo
 
         CreateInput createInput = createInputMessage.getPayload();
 
-        log.info(String.format("Entering create event Function - Event Code:%S",createInput.getCode()));
+        log.info(String.format("Entering create event Function - Event Code:%s",createInput.getCode()));
 
         Origin origin = HeaderUtil.buildOriginFromHeaders(createInputMessage.getHeaders());
 
