@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "UpdateEventInputModel",
+  "title": "UpdateEventModel",
   "type": "object",
   "required": [
     "code",

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "GetAllEventsInputModel",
+  "title": "GetAllEventsModel",
   "type": "object",
   "required": [
   ],
