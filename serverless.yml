@@ -2,6 +2,7 @@ service: event-service
 package:
   version: 0.0.1-SNAPSHOT
   artifact: ./application/target/${self:service}-${self:package.version}-${self:provider}.jar
+  excludeDevDependencies: true
 provider:
   name: aws
   runtime: java11
@@ -14,47 +15,85 @@ provider:
         - "dynamodb:*"
       Resource: "*"
   environment:
-    APPLICATION_ENVIRONMENT: Dev
+    APPLICATION_ENVIRONMENT: ${opt:stage}
     CLOUD_REGION: US_East_2
 functions:
   creatEvent:
-    handler: org.springframework.cloud.function.adapter.aws.SpringBootStreamHandler
+    handler: org.springframework.cloud.function.adapter.aws.SpringBootApiGatewayRequestHandler
     events:
       - http:
           path: event/create
           method: post
+          async: true
+          cors: true
+          request:
+            schemas:
+              application/json:
+                schema: ${file(api-gateway/create.json)}
+                name: CreateEventModel
+                description: 'get subscribe model'
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: createFunction
   updateEvent:
-    handler: org.springframework.cloud.function.adapter.aws.SpringBootStreamHandler
+    handler: org.springframework.cloud.function.adapter.aws.SpringBootApiGatewayRequestHandler
     events:
       - http:
           path: event/update
           method: post
+          async: true
+          cors: true
+          request:
+            schemas:
+              application/json:
+                schema: ${file(api-gateway/update.json)}
+                name: UpdateEventModel
+                description: 'get subscribe model'
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: updateFunction
   disableEvent:
-    handler: org.springframework.cloud.function.adapter.aws.SpringBootStreamHandler
+    handler: org.springframework.cloud.function.adapter.aws.SpringBootApiGatewayRequestHandler
     events:
       - http:
           path: event/disable
           method: post
+          async: true
+          cors: true
+          request:
+            schemas:
+              application/json:
+                schema: ${file(api-gateway/disable.json)}
+                name: DisableEventModel
+                description: 'get subscribe model'
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: disableFunction
   getEvent:
-    handler: org.springframework.cloud.function.adapter.aws.SpringBootStreamHandler
+    handler: org.springframework.cloud.function.adapter.aws.SpringBootApiGatewayRequestHandler
     events:
       - http:
-          path: event/findById
+          path: event/get
           method: post
+          cors: true
+          request:
+            schemas:
+              application/json:
+                schema: ${file(api-gateway/get.json)}
+                name: GetEventModel
+                description: 'get subscribe model'
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: getFunction
   getAllEvent:
-    handler: org.springframework.cloud.function.adapter.aws.SpringBootStreamHandler
+    handler: org.springframework.cloud.function.adapter.aws.SpringBootApiGatewayRequestHandler
     events:
       - http:
           path: event/getAll
           method: post
+          cors: true
+          request:
+            schemas:
+              application/json:
+                schema: ${file(api-gateway/getAll.json)}
+                name: GetAllEventsModel
+                description: 'get subscribe model'
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: getAllFunction
 resources:

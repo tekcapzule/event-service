@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface EventService {
 
-    Event create(CreateCommand createCommand);
+    void create(CreateCommand createCommand);
 
-    Event update(UpdateCommand updateCommand);
+    void update(UpdateCommand updateCommand);
 
     void disable(DisableCommand disableCommand);
 

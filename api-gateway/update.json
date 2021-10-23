@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "UpdateEventInputModel",
+  "type": "object",
+  "required": [
+    "code",
+    "name",
+    "eventDate",
+    "description",
+    "imageUrl",
+    "registrationUrl"
+  ],
+  "properties": {
+    "code": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "eventDate": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "registrationUrl": {
+      "type": "string"
+    }
+  }
+}

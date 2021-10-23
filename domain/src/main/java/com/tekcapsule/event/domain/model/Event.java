@@ -16,7 +16,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Event extends BaseDomainEntity<String> implements AggregateRoot {
+public class Event extends BaseDomainEntity implements AggregateRoot {
 
     @DynamoDBHashKey(attributeName="code")
     private String code;

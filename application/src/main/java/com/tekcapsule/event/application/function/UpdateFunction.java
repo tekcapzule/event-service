@@ -21,7 +21,7 @@ import java.util.function.Function;
 
 @Component
 @Slf4j
-public class UpdateFunction implements Function<Message<UpdateInput>, Message<Event>> {
+public class UpdateFunction implements Function<Message<UpdateInput>, Message<Void>> {
 
     private final EventService eventService;
 
@@ -31,7 +31,7 @@ public class UpdateFunction implements Function<Message<UpdateInput>, Message<Ev
 
 
     @Override
-    public Message<Event> apply(Message<UpdateInput> updateInputMessage) {
+    public Message<Void> apply(Message<UpdateInput> updateInputMessage) {
         UpdateInput updateInput = updateInputMessage.getPayload();
 
         log.info(String.format("Entering update event Function - Event Code:%S",  updateInput.getCode()));
@@ -39,11 +39,11 @@ public class UpdateFunction implements Function<Message<UpdateInput>, Message<Ev
         Origin origin = HeaderUtil.buildOriginFromHeaders(updateInputMessage.getHeaders());
 
         UpdateCommand updateCommand = InputOutputMapper.buildUpdateCommandFromUpdateInput.apply(updateInput, origin);
-        Event event = eventService.update(updateCommand);
+        eventService.update(updateCommand);
         Map<String, Object> responseHeader = new HashMap<>();
         responseHeader.put(AppConstants.HTTP_STATUS_CODE_HEADER, HttpStatus.OK.value());
 
-        return new GenericMessage<>(event, responseHeader);
+        return new GenericMessage(responseHeader);
 
     }
 }

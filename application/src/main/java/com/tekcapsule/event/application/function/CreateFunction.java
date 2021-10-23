@@ -21,7 +21,7 @@ import java.util.function.Function;
 
 @Component
 @Slf4j
-public class CreateFunction implements Function<Message<CreateInput>, Message<Event>> {
+public class CreateFunction implements Function<Message<CreateInput>, Message<Void>> {
 
     private final EventService eventService;
 
@@ -31,7 +31,7 @@ public class CreateFunction implements Function<Message<CreateInput>, Message<Ev
 
 
     @Override
-    public Message<Event> apply(Message<CreateInput> createInputMessage) {
+    public Message<Void> apply(Message<CreateInput> createInputMessage) {
 
         CreateInput createInput = createInputMessage.getPayload();
 
@@ -40,10 +40,10 @@ public class CreateFunction implements Function<Message<CreateInput>, Message<Ev
         Origin origin = HeaderUtil.buildOriginFromHeaders(createInputMessage.getHeaders());
 
         CreateCommand createCommand = InputOutputMapper.buildCreateCommandFromCreateInput.apply(createInput, origin);
-        Event event = eventService.create(createCommand);
+        eventService.create(createCommand);
         Map<String, Object> responseHeader = new HashMap<>();
         responseHeader.put(AppConstants.HTTP_STATUS_CODE_HEADER, HttpStatus.OK.value());
 
-        return new GenericMessage<>(event, responseHeader);
+        return new GenericMessage(responseHeader);
     }
 }

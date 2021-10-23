@@ -24,7 +24,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event create(CreateCommand createCommand) {
+    public void create(CreateCommand createCommand) {
 
         log.info(String.format("Entering create event service - Event Code:%S", createCommand.getName()));
 
@@ -41,11 +41,11 @@ public class EventServiceImpl implements EventService {
         event.setUpdatedOn(createCommand.getExecOn());
         event.setAddedBy(createCommand.getExecBy().getUserId());
 
-        return eventDynamoRepository.save(event);
+        eventDynamoRepository.save(event);
     }
 
     @Override
-    public Event update(UpdateCommand updateCommand) {
+    public void update(UpdateCommand updateCommand) {
 
         log.info(String.format("Entering update event service - Event Code:%S", updateCommand.getCode()));
 
@@ -62,7 +62,6 @@ public class EventServiceImpl implements EventService {
 
             eventDynamoRepository.save(event);
         }
-        return event;
     }
 
     @Override
