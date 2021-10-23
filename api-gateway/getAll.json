@@ -2,8 +2,6 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "GetAllEventsModel",
   "type": "object",
-  "required": [
-  ],
   "properties": {
   }
 }
