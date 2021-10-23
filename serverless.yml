@@ -24,7 +24,6 @@ functions:
       - http:
           path: event/create
           method: post
-          async: true
           cors: true
           request:
             schemas:
@@ -40,7 +39,6 @@ functions:
       - http:
           path: event/update
           method: post
-          async: true
           cors: true
           request:
             schemas:
@@ -56,7 +54,6 @@ functions:
       - http:
           path: event/disable
           method: post
-          async: true
           cors: true
           request:
             schemas:
