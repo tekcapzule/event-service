@@ -21,13 +21,18 @@ public class EventRepositoryImpl implements EventDynamoRepository {
     }
 
     @Override
-    public List<Event> findAll() {
-        return dynamo.scan(Event.class,new DynamoDBScanExpression());
+    public Event findBy(String code) {
+        return dynamo.load(Event.class, code);
     }
 
     @Override
-    public Event findBy(String code) {
-        return dynamo.load(Event.class, code);
+    public List<Event> findAll() {
+        return dynamo.scan(Event.class, new DynamoDBScanExpression());
+    }
+
+    @Override
+    public Event findBy(String code, String eventDate) {
+        return dynamo.load(Event.class, code, eventDate);
     }
 
     @Override

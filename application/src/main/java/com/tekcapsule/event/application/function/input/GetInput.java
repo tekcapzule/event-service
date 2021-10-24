@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GetInput {
     private String code;
+    private String eventDate;
 }

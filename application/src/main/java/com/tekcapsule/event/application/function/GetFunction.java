@@ -31,7 +31,7 @@ public class GetFunction implements Function<Message<GetInput>, Message<Event>> 
 
         log.info(String.format("Entering find by event Function - Event Code:%s}",  getInput.getCode()));
 
-        Event event = eventService.findBy(getInput.getCode());
+        Event event = eventService.findBy(getInput.getCode(),getInput.getEventDate());
         Map<String, Object> responseHeader = new HashMap<>();
         if (event == null) {
             responseHeader.put(AppConstants.HTTP_STATUS_CODE_HEADER, HttpStatus.NOT_FOUND.value());

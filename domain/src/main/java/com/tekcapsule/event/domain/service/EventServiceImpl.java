@@ -79,10 +79,10 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event findBy(String code) {
+    public Event findBy(String code, String eventDate) {
         log.info(String.format("Entering find by event service - Event Code:%s", code));
 
-        return eventDynamoRepository.findBy(code);
+        return eventDynamoRepository.findBy(code, eventDate);
     }
 
     @Override

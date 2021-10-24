@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DisableInput {
     private String code;
+    private String eventDate;
 }

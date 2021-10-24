@@ -3,10 +3,14 @@
   "title": "DisableEventModel",
   "type": "object",
   "required": [
-    "code"
+    "code",
+    "eventDate"
   ],
   "properties": {
     "code": {
+      "type": "string"
+    },
+    "eventDate": {
       "type": "string"
     }
   }
