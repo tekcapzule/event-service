@@ -1,5 +1,6 @@
 package com.tekcapsule.event.application.function;
 
+import com.tekcapsule.core.domain.EmptyFunctionInput;
 import com.tekcapsule.event.application.config.AppConstants;
 import com.tekcapsule.event.domain.model.Event;
 import com.tekcapsule.event.domain.service.EventService;
@@ -16,7 +17,7 @@ import java.util.function.Function;
 
 @Component
 @Slf4j
-public class GetAllFunction implements Function<Message<Void>, Message<List<Event>>> {
+public class GetAllFunction implements Function<Message<EmptyFunctionInput>, Message<List<Event>>> {
 
     private final EventService eventService;
 
@@ -25,7 +26,7 @@ public class GetAllFunction implements Function<Message<Void>, Message<List<Even
     }
 
     @Override
-    public Message<List<Event>> apply(Message<Void> findAllMessage) {
+    public Message<List<Event>> apply(Message<EmptyFunctionInput> findAllMessage) {
 
         log.info("Entering get all events Function");
 
