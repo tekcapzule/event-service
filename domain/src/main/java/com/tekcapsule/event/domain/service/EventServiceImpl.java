@@ -49,7 +49,7 @@ public class EventServiceImpl implements EventService {
 
         log.info(String.format("Entering update event service - Event Code:%s", updateCommand.getCode()));
 
-        Event event = eventDynamoRepository.findBy(updateCommand.getCode());
+        Event event = eventDynamoRepository.findBy(updateCommand.getCode(),updateCommand.getEventDate());
         if (event != null) {
 
             event.setName(updateCommand.getName());
@@ -69,7 +69,7 @@ public class EventServiceImpl implements EventService {
 
         log.info(String.format("Entering disable event service - Event Code:%s", disableCommand.getCode()));
 
-        Event event = eventDynamoRepository.findBy(disableCommand.getCode());
+        Event event = eventDynamoRepository.findBy(disableCommand.getCode(), disableCommand.getEventDate());
         if (event != null) {
             event.setActive(false);
             event.setUpdatedOn(disableCommand.getExecOn());
