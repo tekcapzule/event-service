@@ -98,7 +98,7 @@ resources:
     eventTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: Event
+        TableName: ${opt:stage}Event
         AttributeDefinitions:
           - AttributeName: code
             AttributeType: S
