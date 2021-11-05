@@ -1,7 +1,11 @@
 package com.tekcapsule.event.application.function;
 
 import com.tekcapsule.core.domain.EmptyFunctionInput;
-import com.tekcapsule.event.application.config.AppConstants;
+import com.tekcapsule.core.utils.HeaderUtil;
+import com.tekcapsule.core.utils.Outcome;
+import com.tekcapsule.core.utils.PayloadUtil;
+import com.tekcapsule.core.utils.Stage;
+import com.tekcapsule.event.application.config.AppConfig;
 import com.tekcapsule.event.domain.model.Event;
 import com.tekcapsule.event.domain.service.EventService;
 import lombok.extern.slf4j.Slf4j;
@@ -21,19 +25,26 @@ public class GetAllFunction implements Function<Message<EmptyFunctionInput>, Mes
 
     private final EventService eventService;
 
-    public GetAllFunction(final EventService eventService) {
+    private final AppConfig appConfig;
+
+    public GetAllFunction(final EventService eventService, final AppConfig appConfig) {
         this.eventService = eventService;
+        this.appConfig = appConfig;
     }
 
     @Override
     public Message<List<Event>> apply(Message<EmptyFunctionInput> findAllMessage) {
-
-        log.info("Entering get all events Function");
-
-        List<Event> events = eventService.findAll();
-        Map<String, Object> responseHeader = new HashMap<>();
-        responseHeader.put(AppConstants.HTTP_STATUS_CODE_HEADER, HttpStatus.NOT_FOUND.value());
-
-        return new GenericMessage<>(events, responseHeader);
+        Map<String, Object> responseHeaders = new HashMap<>();
+        Map<String, Object> payload = new HashMap<>();
+        String stage = appConfig.getStage().toUpperCase();
+        try {
+            log.info("Entering get all events Function");
+            List<Event> events = eventService.findAll();
+            responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.SUCCESS);
+        } catch (Exception ex) {
+            log.error(ex.getMessage());
+            responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.ERROR);
+        }
+        return new GenericMessage(payload, responseHeaders);
     }
 }
