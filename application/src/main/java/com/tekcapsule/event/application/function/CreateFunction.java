@@ -11,7 +11,6 @@ import com.tekcapsule.event.application.mapper.InputOutputMapper;
 import com.tekcapsule.event.domain.command.CreateCommand;
 import com.tekcapsule.event.domain.service.EventService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
