@@ -12,6 +12,7 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,16 +34,16 @@ public class GetAllFunction implements Function<Message<EmptyFunctionInput>, Mes
     @Override
     public Message<List<Event>> apply(Message<EmptyFunctionInput> findAllMessage) {
         Map<String, Object> responseHeaders = new HashMap<>();
-        Map<String, Object> payload = new HashMap<>();
+        List<Event> events = new ArrayList<>();
         String stage = appConfig.getStage().toUpperCase();
         try {
             log.info("Entering get all events Function");
-            List<Event> events = eventService.findAll();
+            events = eventService.findAll();
             responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.SUCCESS);
         } catch (Exception ex) {
             log.error(ex.getMessage());
             responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.ERROR);
         }
-        return new GenericMessage(payload, responseHeaders);
+        return new GenericMessage(events, responseHeaders);
     }
 }
