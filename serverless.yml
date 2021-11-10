@@ -24,7 +24,14 @@ functions:
       - http:
           path: event/create
           method: post
-          cors: true
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Authorization
+              - X-User-Login
+              - X-Channel-Code
+            allowCredentials: true
           request:
             schemas:
               application/json:
@@ -39,7 +46,14 @@ functions:
       - http:
           path: event/update
           method: post
-          cors: true
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Authorization
+              - X-User-Login
+              - X-Channel-Code
+            allowCredentials: true
           request:
             schemas:
               application/json:
@@ -54,7 +68,14 @@ functions:
       - http:
           path: event/disable
           method: post
-          cors: true
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Authorization
+              - X-User-Login
+              - X-Channel-Code
+            allowCredentials: true
           request:
             schemas:
               application/json:
@@ -69,7 +90,14 @@ functions:
       - http:
           path: event/get
           method: post
-          cors: true
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Authorization
+              - X-User-Login
+              - X-Channel-Code
+            allowCredentials: true
           request:
             schemas:
               application/json:
@@ -84,7 +112,14 @@ functions:
       - http:
           path: event/getAll
           method: post
-          cors: true
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Authorization
+              - X-User-Login
+              - X-Channel-Code
+            allowCredentials: true
           request:
             schemas:
               application/json:
