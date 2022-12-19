@@ -130,6 +130,27 @@ functions:
     environment:
       SPRING_CLOUD_FUNCTION_DEFINITION: getAllFunction
 resources:
+  extensions:
+    CreatEventLambdaFunction:
+      Properties:
+        SnapStart:
+          ApplyOn: PublishedVersions
+    UpdateEventLambdaFunction:
+      Properties:
+        SnapStart:
+          ApplyOn: PublishedVersions
+    DisableEventLambdaFunction:
+      Properties:
+        SnapStart:
+          ApplyOn: PublishedVersions
+    GetEventLambdaFunction:
+      Properties:
+        SnapStart:
+          ApplyOn: PublishedVersions
+    GetAllEventLambdaFunction:
+      Properties:
+        SnapStart:
+          ApplyOn: PublishedVersions
   Resources:
     eventTable:
       Type: AWS::DynamoDB::Table
