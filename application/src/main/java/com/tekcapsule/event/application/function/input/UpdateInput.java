@@ -15,6 +15,7 @@ public class UpdateInput {
     private Schedule schedule;
     private String venue;
     private String imageUrl;
+    private String summary;
     private String description;
     private String registrationUrl;
 }

@@ -34,6 +34,7 @@ public class EventServiceImpl implements EventService {
         Event event = Event.builder()
                 .code(code)
                 .name(createCommand.getName())
+                .summary(createCommand.getSummary())
                 .description(createCommand.getDescription())
                 .eventDate(createCommand.getEventDate())
                 .imageUrl(createCommand.getImageUrl())
@@ -58,6 +59,7 @@ public class EventServiceImpl implements EventService {
         if (event != null) {
 
             event.setName(updateCommand.getName());
+            event.setSummary(updateCommand.getSummary());
             event.setDescription(updateCommand.getDescription());
             event.setEventDate(updateCommand.getEventDate());
             event.setImageUrl(updateCommand.getImageUrl());
