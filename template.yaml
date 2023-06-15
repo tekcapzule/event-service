@@ -26,7 +26,7 @@ Globals:
       Variables:
         TABLE: !Ref EventTable
         APPLICATION_ENVIRONMENT: !Ref Stage
-        CLOUD_REGION: US_West_2
+        CLOUD_REGION: us-east-1
         MAIN_CLASS: com.tekcapsule.event.application.EventApplication
         JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
 
@@ -73,7 +73,7 @@ Resources:
   CreatEventFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub "${Stage}-Event-CreatEvent"
+      FunctionName: !Sub "${Stage}-Event-CreateEvent"
       SnapStart:
         ApplyOn: PublishedVersions
       Policies:

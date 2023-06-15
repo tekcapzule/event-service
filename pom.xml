@@ -30,7 +30,7 @@
         <repository>
             <id>event</id>
             <name>GitHub TekCapsule Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/tekcapsule/tekcapsule-core</url>
+            <url>https://maven.pkg.github.com/tekcapsule/event-service</url>
         </repository>
     </distributionManagement>
 </project>
