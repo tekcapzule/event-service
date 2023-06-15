@@ -15,7 +15,7 @@ public interface EventService {
 
     void disable(DisableCommand disableCommand);
 
-    Event findBy(String code, String eventDate);
+    Event findBy(String code);
 
     List<Event> findAll();
 

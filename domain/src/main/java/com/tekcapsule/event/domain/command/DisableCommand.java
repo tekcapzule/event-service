@@ -10,5 +10,4 @@ import lombok.Data;
 @Builder
 public class DisableCommand extends Command {
     private String code;
-    private String eventDate;
 }

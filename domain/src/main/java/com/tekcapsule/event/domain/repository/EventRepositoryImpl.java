@@ -31,11 +31,6 @@ public class EventRepositoryImpl implements EventDynamoRepository {
     }
 
     @Override
-    public Event findBy(String code, String eventDate) {
-        return dynamo.load(Event.class, code, eventDate);
-    }
-
-    @Override
     public Event save(Event event) {
         dynamo.save(event);
         return event;

@@ -39,7 +39,7 @@ public class GetFunction implements Function<Message<GetInput>, Message<Event>> 
         try {
             GetInput getInput = getInputMessage.getPayload();
             log.info(String.format("Entering find by event Function - Event Code:%s}", getInput.getCode()));
-            event = eventService.findBy(getInput.getCode(), getInput.getEventDate());
+            event = eventService.findBy(getInput.getCode());
             Map<String, Object> responseHeader = new HashMap<>();
             if (event == null) {
                 responseHeaders = HeaderUtil.populateResponseHeaders(responseHeaders, Stage.valueOf(stage), Outcome.NOT_FOUND);

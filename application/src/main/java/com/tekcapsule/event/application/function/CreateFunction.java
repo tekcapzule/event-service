@@ -40,7 +40,7 @@ public class CreateFunction implements Function<Message<CreateInput>, Message<Vo
         String stage = appConfig.getStage().toUpperCase();
         try {
             CreateInput createInput = createInputMessage.getPayload();
-            log.info(String.format("Entering create event Function - Event Code:%s", createInput.getCode()));
+            log.info(String.format("Entering create event Function - Event Name:%s", createInput.getName()));
             Origin origin = HeaderUtil.buildOriginFromHeaders(createInputMessage.getHeaders());
             CreateCommand createCommand = InputOutputMapper.buildCreateCommandFromCreateInput.apply(createInput, origin);
             eventService.create(createCommand);
