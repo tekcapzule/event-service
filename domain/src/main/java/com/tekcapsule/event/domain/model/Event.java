@@ -20,7 +20,6 @@ public class Event extends BaseDomainEntity implements AggregateRoot {
     @DynamoDBRangeKey(attributeName="eventDate")
     private String eventDate;
     @DynamoDBAttribute(attributeName="schedule")
-    @DynamoDBTypeConvertedEnum
     private Schedule schedule;
     @DynamoDBAttribute(attributeName = "name")
     private String name;
