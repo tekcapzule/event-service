@@ -16,6 +16,6 @@ import lombok.NoArgsConstructor;
 public class Schedule {
     private String startDate;
     private String endDate;
-    private int startTime;
-    private int endTime;
+    private String startTime;
+    private String endTime;
 }

@@ -1,9 +1,6 @@
 package com.tekcapsule.event.domain.model;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import com.amazonaws.services.dynamodbv2.datamodeling.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tekcapsule.core.domain.AggregateRoot;
 import com.tekcapsule.core.domain.BaseDomainEntity;
@@ -22,7 +19,8 @@ public class Event extends BaseDomainEntity implements AggregateRoot {
     private String code;
     @DynamoDBRangeKey(attributeName="eventDate")
     private String eventDate;
-    @DynamoDBRangeKey(attributeName="schedule")
+    @DynamoDBAttribute(attributeName="schedule")
+    @DynamoDBTypeConvertedEnum
     private Schedule schedule;
     @DynamoDBAttribute(attributeName = "name")
     private String name;
