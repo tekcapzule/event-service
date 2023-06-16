@@ -57,8 +57,6 @@ Resources:
       AttributeDefinitions:
         - AttributeName: code
           AttributeType: S
-        - AttributeName: eventDate
-          AttributeType: S
       KeySchema:
         - AttributeName: code
           KeyType: HASH
