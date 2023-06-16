@@ -62,8 +62,6 @@ Resources:
       KeySchema:
         - AttributeName: code
           KeyType: HASH
-        - AttributeName: eventDate
-          KeyType: RANGE
       ProvisionedThroughput:
         ReadCapacityUnits: 1
         WriteCapacityUnits: 1
