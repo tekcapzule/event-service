@@ -15,12 +15,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @DynamoDBDocument
 public class Schedule {
-    @DynamoDBAttribute(attributeName ="startDate")
     private String startDate;
-    @DynamoDBAttribute(attributeName ="endDate")
     private String endDate;
-    @DynamoDBAttribute(attributeName ="startTime")
     private String startTime;
-    @DynamoDBAttribute(attributeName ="endTime")
     private String endTime;
 }
