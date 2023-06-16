@@ -17,7 +17,7 @@ public class Event extends BaseDomainEntity implements AggregateRoot {
 
     @DynamoDBHashKey(attributeName="code")
     private String code;
-    @DynamoDBRangeKey(attributeName="eventDate")
+    @DynamoDBAttribute(attributeName="eventDate")
     private String eventDate;
     @DynamoDBAttribute(attributeName="schedule")
     private Schedule schedule;
