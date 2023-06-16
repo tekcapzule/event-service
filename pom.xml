@@ -5,7 +5,7 @@
 
     <groupId>com.tekcapsule</groupId>
     <artifactId>event-application</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <packaging>pom</packaging>
     <name>Event Application</name>
     <description>Event Application</description>
