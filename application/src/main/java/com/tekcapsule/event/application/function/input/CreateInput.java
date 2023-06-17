@@ -21,4 +21,6 @@ public class CreateInput {
     private String registrationUrl;
     private Promotion promotion;
     private Region region;
+    private Boolean pastPopularEvent;
+    private String eventRecordingUrl;
 }

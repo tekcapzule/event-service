@@ -39,6 +39,8 @@ public class EventServiceImpl implements EventService {
                 .eventDate(createCommand.getEventDate())
                 .imageUrl(createCommand.getImageUrl())
                 .registrationUrl(createCommand.getRegistrationUrl())
+                .eventRecordingUrl(createCommand.getEventRecordingUrl())
+                .pastPopularEvent(createCommand.getPastPopularEvent())
                 .schedule(createCommand.getSchedule())
                 .venue(createCommand.getVenue())
                 .region(createCommand.getRegion())
