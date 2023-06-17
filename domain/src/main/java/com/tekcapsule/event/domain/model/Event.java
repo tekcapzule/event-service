@@ -35,8 +35,8 @@ public class Event extends BaseDomainEntity implements AggregateRoot {
     private String registrationUrl;
     @DynamoDBAttribute(attributeName = "eventRecordingUrl")
     private String eventRecordingUrl;
-    @DynamoDBAttribute(attributeName = "promoted")
-    private Boolean promoted;
+    @DynamoDBAttribute(attributeName = "promotion")
+    private Promotion promotion;
     @DynamoDBAttribute(attributeName = "pastPopularEvent")
     private Boolean pastPopularEvent;
     @DynamoDBAttribute(attributeName = "region")

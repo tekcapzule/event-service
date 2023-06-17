@@ -1,6 +1,7 @@
 package com.tekcapsule.event.application.function.input;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.tekcapsule.event.domain.model.Promotion;
 import com.tekcapsule.event.domain.model.Region;
 import com.tekcapsule.event.domain.model.Schedule;
 import lombok.Data;
@@ -20,7 +21,7 @@ public class UpdateInput {
     private String description;
     private String registrationUrl;
     private String eventRecordingUrl;
-    private Boolean promoted;
+    private Promotion promotion;
     private Boolean pastPopularEvent;
     private Region region;
 }

@@ -5,6 +5,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tekcapsule.core.domain.Command;
+import com.tekcapsule.event.domain.model.Promotion;
 import com.tekcapsule.event.domain.model.Region;
 import com.tekcapsule.event.domain.model.Schedule;
 import com.tekcapsule.event.domain.model.Status;
@@ -24,7 +25,7 @@ public class CreateCommand extends Command {
     private String summary;
     private String description;
     private String registrationUrl;
-    private Boolean promoted;
+    private Promotion promotion;
     private Region region;
 }
 
