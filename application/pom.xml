@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.tekcapsule</groupId>
     <artifactId>event-service</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <name>Event Service</name>
     <description>Event Service</description>
     <properties>
@@ -59,7 +59,7 @@
         <dependency>
             <groupId>com.tekcapsule</groupId>
             <artifactId>event-domain</artifactId>
-            <version>1.0.7</version>
+            <version>1.0.8</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

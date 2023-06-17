@@ -27,6 +27,8 @@ public class CreateCommand extends Command {
     private String registrationUrl;
     private Promotion promotion;
     private Region region;
+    private Boolean pastPopularEvent;
+    private String eventRecordingUrl;
 }
 
 
