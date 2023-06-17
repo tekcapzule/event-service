@@ -41,6 +41,8 @@ public class EventServiceImpl implements EventService {
                 .registrationUrl(createCommand.getRegistrationUrl())
                 .schedule(createCommand.getSchedule())
                 .venue(createCommand.getVenue())
+                .region(createCommand.getRegion())
+                .promoted(createCommand.getPromoted())
                 .status(Status.ACTIVE)
                 .build();
         event.setAddedOn(createCommand.getExecOn());
@@ -66,6 +68,10 @@ public class EventServiceImpl implements EventService {
             event.setRegistrationUrl(updateCommand.getRegistrationUrl());
             event.setSchedule(updateCommand.getSchedule());
             event.setVenue(updateCommand.getVenue());
+            event.setRegion(updateCommand.getRegion());
+            event.setEventRecordingUrl(updateCommand.getEventRecordingUrl());
+            event.setPastPopularEvent(updateCommand.getPastPopularEvent());
+            event.setPromoted(updateCommand.getPromoted());
             event.setUpdatedOn(updateCommand.getExecOn());
             event.setUpdatedBy(updateCommand.getExecBy().getUserId());
 

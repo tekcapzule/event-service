@@ -2,6 +2,7 @@ package com.tekcapsule.event.domain.command;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tekcapsule.core.domain.Command;
+import com.tekcapsule.event.domain.model.Region;
 import com.tekcapsule.event.domain.model.Schedule;
 import lombok.Builder;
 import lombok.Data;
@@ -20,4 +21,8 @@ public class UpdateCommand extends Command {
     private String summary;
     private String description;
     private String registrationUrl;
+    private String eventRecordingUrl;
+    private Boolean promoted;
+    private Boolean pastPopularEvent;
+    private Region region;
 }
