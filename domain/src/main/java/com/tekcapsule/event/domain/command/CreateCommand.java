@@ -1,14 +1,10 @@
 package com.tekcapsule.event.domain.command;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tekcapsule.core.domain.Command;
 import com.tekcapsule.event.domain.model.Promotion;
 import com.tekcapsule.event.domain.model.Region;
 import com.tekcapsule.event.domain.model.Schedule;
-import com.tekcapsule.event.domain.model.Status;
 import lombok.Builder;
 import lombok.Data;
 
@@ -28,7 +24,7 @@ public class CreateCommand extends Command {
     private Promotion promotion;
     private Region region;
     private Boolean pastPopularEvent;
-    private String eventRecordingUrl;
+    private String resourceUrl;
 }
 
 

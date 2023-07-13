@@ -20,7 +20,7 @@ public class UpdateInput {
     private String summary;
     private String description;
     private String registrationUrl;
-    private String eventRecordingUrl;
+    private String resourceUrl;
     private Promotion promotion;
     private Boolean pastPopularEvent;
     private Region region;
