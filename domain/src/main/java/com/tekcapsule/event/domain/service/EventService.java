@@ -1,5 +1,6 @@
 package com.tekcapsule.event.domain.service;
 
+import com.tekcapsule.event.domain.command.ApproveCommand;
 import com.tekcapsule.event.domain.command.CreateCommand;
 import com.tekcapsule.event.domain.command.DisableCommand;
 import com.tekcapsule.event.domain.command.UpdateCommand;
@@ -18,5 +19,6 @@ public interface EventService {
     Event findBy(String code);
 
     List<Event> findAll();
+    void approve(ApproveCommand approveCommand);
 
 }

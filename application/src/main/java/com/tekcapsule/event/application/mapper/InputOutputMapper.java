@@ -3,7 +3,9 @@ package com.tekcapsule.event.application.mapper;
 import com.tekcapsule.core.domain.Command;
 import com.tekcapsule.core.domain.ExecBy;
 import com.tekcapsule.core.domain.Origin;
+import com.tekcapsule.event.application.function.input.ApproveEventInput;
 import com.tekcapsule.event.application.function.input.DisableInput;
+import com.tekcapsule.event.domain.command.ApproveCommand;
 import com.tekcapsule.event.domain.command.CreateCommand;
 import com.tekcapsule.event.domain.command.DisableCommand;
 import com.tekcapsule.event.domain.command.UpdateCommand;
@@ -49,6 +51,13 @@ public final class InputOutputMapper {
         BeanUtils.copyProperties(disableInput, disableCommand);
         addOrigin.apply(disableCommand, origin);
         return disableCommand;
+    };
+
+    public static final BiFunction<ApproveEventInput, Origin, ApproveCommand> buildApproveCommandFromApproveEventInput = (approveEventInput, origin) -> {
+        ApproveCommand approveCommand =  ApproveCommand.builder().build();
+        BeanUtils.copyProperties(approveEventInput, approveCommand);
+        addOrigin.apply(approveCommand, origin);
+        return approveCommand;
     };
 
 }

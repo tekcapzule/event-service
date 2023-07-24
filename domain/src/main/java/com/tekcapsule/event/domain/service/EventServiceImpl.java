@@ -1,5 +1,6 @@
 package com.tekcapsule.event.domain.service;
 
+import com.tekcapsule.event.domain.command.ApproveCommand;
 import com.tekcapsule.event.domain.command.CreateCommand;
 import com.tekcapsule.event.domain.command.DisableCommand;
 import com.tekcapsule.event.domain.command.UpdateCommand;
@@ -28,12 +29,12 @@ public class EventServiceImpl implements EventService {
     @Override
     public void create(CreateCommand createCommand) {
 
-        log.info(String.format("Entering create event service - Event Name:%s", createCommand.getName()));
+        log.info(String.format("Entering create event service - Event Name:%s", createCommand.getTitle()));
 
         String code= UUID.randomUUID().toString();
         Event event = Event.builder()
                 .code(code)
-                .name(createCommand.getName())
+                .title(createCommand.getTitle())
                 .summary(createCommand.getSummary())
                 .description(createCommand.getDescription())
                 .eventDate(createCommand.getEventDate())
@@ -45,7 +46,7 @@ public class EventServiceImpl implements EventService {
                 .venue(createCommand.getVenue())
                 .region(createCommand.getRegion())
                 .promotion(createCommand.getPromotion())
-                .status(Status.ACTIVE)
+                .status(Status.SUBMITTED)
                 .build();
         event.setAddedOn(createCommand.getExecOn());
         event.setUpdatedOn(createCommand.getExecOn());
@@ -62,7 +63,7 @@ public class EventServiceImpl implements EventService {
         Event event = eventDynamoRepository.findBy(updateCommand.getCode());
         if (event != null) {
 
-            event.setName(updateCommand.getName());
+            event.setTitle(updateCommand.getTitle());
             event.setSummary(updateCommand.getSummary());
             event.setDescription(updateCommand.getDescription());
             event.setEventDate(updateCommand.getEventDate());
@@ -94,6 +95,22 @@ public class EventServiceImpl implements EventService {
             eventDynamoRepository.save(event);
         }
     }
+
+    @Override
+    public void approve(ApproveCommand approveCommand) {
+        log.info(String.format("Entering approve event service -  event code:%s", approveCommand.getCode()));
+
+        Event event = eventDynamoRepository.findBy(approveCommand.getCode());
+        if (event != null) {
+            event.setStatus(Status.ACTIVE);
+
+            event.setUpdatedOn(approveCommand.getExecOn());
+            event.setUpdatedBy(approveCommand.getExecBy().getUserId());
+
+            eventDynamoRepository.save(event);
+        }
+    }
+
 
     @Override
     public Event findBy(String code) {

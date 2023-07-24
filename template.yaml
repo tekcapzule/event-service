@@ -170,6 +170,27 @@ Resources:
             RestApiId:
               Ref: EventApi
 
+  ApproveEventFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${Stage}-Event-ApproveEvent"
+      SnapStart:
+        ApplyOn: PublishedVersions
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref EventTable
+      Environment:
+        Variables:
+          SPRING_CLOUD_FUNCTION_DEFINITION: approveFunction
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: event/approve
+            Method: post
+            RestApiId:
+              Ref: EventApi
+
 
   # Set Output Variable
 

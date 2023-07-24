@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdateInput {
     private String code;
-    private String name;
+    private String title;
     private String eventDate;
     private Schedule schedule;
     private String venue;
