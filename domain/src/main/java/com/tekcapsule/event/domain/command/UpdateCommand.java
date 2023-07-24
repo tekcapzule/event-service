@@ -14,7 +14,7 @@ import lombok.Data;
 @Builder
 public class UpdateCommand extends Command {
     private String code;
-    private String name;
+    private String title;
     private String eventDate;
     private Schedule schedule;
     private String venue;

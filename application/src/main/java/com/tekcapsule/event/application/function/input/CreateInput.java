@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @NoArgsConstructor
 public class CreateInput {
-    private String name;
+    private String title;
     private String eventDate;
     private Schedule schedule;
     private String venue;

@@ -13,7 +13,7 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Builder
 public class CreateCommand extends Command {
-    private String name;
+    private String title;
     private String eventDate;
     private Schedule schedule;
     private String venue;
