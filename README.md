@@ -57,8 +57,6 @@
 
 This project contains set of functions written in Java 11 to create, update, query and manage TekCapzule events. It is a multi-module maven project with two modules named application & domain. Application module is a springboot application that exposes these functions and domain module contains the domain logic.
 
-![event-service](https://user-images.githubusercontent.com/9839481/209629386-5ca0d9fa-f3ab-4fd6-a8c3-ffa9dddc92cb.png)
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
