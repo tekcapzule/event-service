@@ -27,7 +27,7 @@ Globals:
         TABLE: !Ref EventTable
         APPLICATION_ENVIRONMENT: !Ref Stage
         CLOUD_REGION: us-east-1
-        MAIN_CLASS: com.tekcapsule.event.application.EventApplication
+        MAIN_CLASS: com.tekcapzule.event.application.EventApplication
         JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
 
 Resources:

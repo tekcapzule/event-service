@@ -1,0 +1,24 @@
+{
+  "name": "AI Event10",
+  "eventDate": "23/06/2023",
+  "schedule": {
+    "startDate": "23/06/2023",
+    "endDate": "30/06/2023",
+    "startTime": "10:00am",
+    "endTime": "6:00pm"
+  },
+  "venue": "MindSpace, Hyderabad, India",
+  "imageUrl": "https://graphics.tekcapzule.com/Capsule/AIM/AIM_15.jpg",
+  "summary": "AI event is going on for a week",
+  "description": "description",
+  "registrationUrl": "registration url",
+  "pastPopularEvent":false,
+  "eventRecordingUrl":"https://www.youtube.com/embed/PzLXevjsZ_0",
+  "region":"ASIA_ASIAPACIFIC",
+  "promotion": {
+    "promoted": true,
+    "endsOnUtc": "23/06/2023",
+    "imageUrl": "https://graphics.tekcapzule.com/Capsule/AIM/AIM_11.jpg",
+    "campaignUrl": "campaignUrl"
+  }
+}
