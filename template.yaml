@@ -27,7 +27,7 @@ Globals:
         TABLE: !Ref EventTable
         APPLICATION_ENVIRONMENT: !Ref Stage
         CLOUD_REGION: us-east-1
-        MAIN_CLASS: com.tekcapsule.event.application.EventApplication
+        MAIN_CLASS: com.tekcapzule.event.application.EventApplication
         JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
 
 Resources:
@@ -166,6 +166,27 @@ Resources:
           Type: Api
           Properties:
             Path: event/getAll
+            Method: post
+            RestApiId:
+              Ref: EventApi
+
+  ApproveEventFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${Stage}-Event-ApproveEvent"
+      SnapStart:
+        ApplyOn: PublishedVersions
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref EventTable
+      Environment:
+        Variables:
+          SPRING_CLOUD_FUNCTION_DEFINITION: approveFunction
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: event/approve
             Method: post
             RestApiId:
               Ref: EventApi

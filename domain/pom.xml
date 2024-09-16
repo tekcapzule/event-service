@@ -8,9 +8,9 @@
         <version>2.7.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.tekcapsule</groupId>
+    <groupId>com.tekcapzule</groupId>
     <artifactId>event-domain</artifactId>
-    <version>1.0.7</version>
+    <version>1.1.1</version>
     <name>Event Domain</name>
     <description>Event Domain</description>
     <properties>
@@ -27,9 +27,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.tekcapsule</groupId>
-            <artifactId>tekcapsule-core</artifactId>
-            <version>1.0.2</version>
+            <groupId>com.tekcapzule</groupId>
+            <artifactId>tekcapzule-core</artifactId>
+            <version>1.0.3</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -62,8 +62,8 @@
     <distributionManagement>
         <repository>
             <id>event</id>
-            <name>GitHub TekCapsule Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/tekcapsule/event-service</url>
+            <name>GitHub tekcapzule Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/tekcapzule/event-service</url>
         </repository>
     </distributionManagement>
 </project>
