@@ -2,6 +2,7 @@ package com.tekcapzule.event.domain.command;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tekcapzule.core.domain.Command;
+import com.tekcapzule.event.domain.model.Feedback;
 import com.tekcapzule.event.domain.model.Promotion;
 import com.tekcapzule.event.domain.model.Region;
 import com.tekcapzule.event.domain.model.Schedule;
@@ -16,6 +17,8 @@ public class CreateCommand extends Command {
     private String title;
     private String eventDate;
     private Schedule schedule;
+    private String organizer;
+    private Feedback feedback;
     private String venue;
     private String imageUrl;
     private String summary;
