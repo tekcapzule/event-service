@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.tekcapzule</groupId>
     <artifactId>event-service</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
     <name>Event Service</name>
     <description>Event Service</description>
     <properties>
@@ -59,7 +59,7 @@
         <dependency>
             <groupId>com.tekcapzule</groupId>
             <artifactId>event-domain</artifactId>
-            <version>1.1.1</version>
+            <version>1.1.2</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -121,7 +121,7 @@
     <distributionManagement>
         <repository>
             <id>event</id>
-            <name>GitHub TekCapzule Apache Maven Packages</name>
+            <name>GitHub tekcapzule Apache Maven Packages</name>
             <url>https://maven.pkg.github.com/tekcapzule/event-service</url>
         </repository>
     </distributionManagement>

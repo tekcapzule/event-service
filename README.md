@@ -12,10 +12,10 @@
 <!-- PROJECT LOGO -->
 
 <div align="center">
-  <img src="https://github.com/tekcapzule/tekcapzule-web/assets/9839481/bc965502-9a3a-4eb0-bb56-f1e9c0f4a5b0.svg">
+  <img src="https://user-images.githubusercontent.com/9839481/209770761-99fd940f-3c75-407b-a339-9fd2cd2c5b7f.svg">
   <h3 align="center">Event Service</h3>
   <p align="center">
-    A set of lambda functions to manage events in TekCapzule
+    A set of lambda functions to manage events in tekcapzule
     <br />
     <a href="https://www.tekcapzule.com/">View Demo</a> |
     <a href="https://github.com/tekcapzule/event-service/issues">Report Bug</a> |
@@ -55,7 +55,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project contains set of functions written in Java 11 to create, update, query and manage TekCapzule events. It is a multi-module maven project with two modules named application & domain. Application module is a springboot application that exposes these functions and domain module contains the domain logic.
+This project contains set of functions written in Java 11 to create, update, query and manage tekcapzule events. It is a multi-module maven project with two modules named application & domain. Application module is a springboot application that exposes these functions and domain module contains the domain logic.
+
+![event-service](https://user-images.githubusercontent.com/9839481/209629386-5ca0d9fa-f3ab-4fd6-a8c3-ffa9dddc92cb.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

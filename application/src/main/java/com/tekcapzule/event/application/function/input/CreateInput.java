@@ -1,6 +1,7 @@
 package com.tekcapzule.event.application.function.input;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.tekcapzule.event.domain.model.Feedback;
 import com.tekcapzule.event.domain.model.Promotion;
 import com.tekcapzule.event.domain.model.Region;
 import com.tekcapzule.event.domain.model.Schedule;
@@ -23,4 +24,6 @@ public class CreateInput {
     private Region region;
     private Boolean pastPopularEvent;
     private String resourceUrl;
+    private String organizer;
+    private Feedback feedback;
 }

@@ -46,6 +46,8 @@ public class EventServiceImpl implements EventService {
                 .venue(createCommand.getVenue())
                 .region(createCommand.getRegion())
                 .promotion(createCommand.getPromotion())
+                .organizer(createCommand.getOrganizer())
+                .feedback(createCommand.getFeedback())
                 .status(Status.SUBMITTED)
                 .build();
         event.setAddedOn(createCommand.getExecOn());
@@ -62,22 +64,23 @@ public class EventServiceImpl implements EventService {
 
         Event event = eventDynamoRepository.findBy(updateCommand.getCode());
         if (event != null) {
-
-            event.setTitle(updateCommand.getTitle());
-            event.setSummary(updateCommand.getSummary());
-            event.setDescription(updateCommand.getDescription());
-            event.setEventDate(updateCommand.getEventDate());
-            event.setImageUrl(updateCommand.getImageUrl());
-            event.setRegistrationUrl(updateCommand.getRegistrationUrl());
-            event.setSchedule(updateCommand.getSchedule());
-            event.setVenue(updateCommand.getVenue());
-            event.setRegion(updateCommand.getRegion());
-            event.setResourceUrl(updateCommand.getResourceUrl());
-            event.setPastPopularEvent(updateCommand.getPastPopularEvent());
-            event.setPromotion(updateCommand.getPromotion());
+            event.setTitle(updateCommand.getTitle()!=null? updateCommand.getTitle() : event.getTitle());
+            event.setSummary(updateCommand.getSummary()!=null? updateCommand.getSummary() : event.getSummary());
+            event.setDescription(updateCommand.getDescription()!=null ?updateCommand.getDescription():event.getDescription());
+            event.setEventDate(updateCommand.getEventDate()!=null ? updateCommand.getEventDate(): event.getEventDate());
+            event.setImageUrl(updateCommand.getImageUrl()!=null ? updateCommand.getImageUrl(): event.getImageUrl());
+            event.setRegistrationUrl(updateCommand.getRegistrationUrl()!=null ? updateCommand.getRegistrationUrl():
+                    event.getRegistrationUrl());
+            event.setSchedule(updateCommand.getSchedule()!=null ? updateCommand.getSchedule(): event.getSchedule());
+            event.setVenue(updateCommand.getVenue()!=null ? updateCommand.getVenue(): event.getVenue());
+            event.setRegion(updateCommand.getRegion()!=null ? updateCommand.getRegion(): event.getRegion());
+            event.setResourceUrl(updateCommand.getResourceUrl()!=null ? updateCommand.getResourceUrl(): event.getResourceUrl());
+            event.setPastPopularEvent(updateCommand.getPastPopularEvent()!=null ? updateCommand.getPastPopularEvent(): event.getPastPopularEvent());
+            event.setPromotion(updateCommand.getPromotion()!=null ? updateCommand.getPromotion(): event.getPromotion());
+            event.setOrganizer(updateCommand.getOrganizer()!=null ? updateCommand.getOrganizer(): event.getOrganizer());
+            event.setFeedback(updateCommand.getFeedback()!=null ? updateCommand.getFeedback(): event.getFeedback());
             event.setUpdatedOn(updateCommand.getExecOn());
             event.setUpdatedBy(updateCommand.getExecBy().getUserId());
-
             eventDynamoRepository.save(event);
         }
     }
